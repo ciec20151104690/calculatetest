@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     var count = 0.00
     var flg = 0
     @IBAction func plus(_ sender: Any)
-    
     {
         flg=1
         count=Double(sum.text!)!
@@ -45,6 +44,11 @@ class ViewController: UIViewController {
         count=Double(sum.text!)!
         sum.text=""
     
+    }
+    
+    @IBAction func point(_ sender: Any) {
+       
+        sum.text=sum.text!+"."
     }
     @IBAction func equal(_ sender: Any) {
     
