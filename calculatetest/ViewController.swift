@@ -9,81 +9,156 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var resulttxt: UILabel!
-    var fristval:Double = 0
-    var sencendval:Double = 0
-    var fhval:Int = 0
-    var isfinash:Bool = false
+  
+    @IBOutlet weak var sum: UILabel!
+
+    var count = 0.00
+    var flg = 0
+    @IBAction func plus(_ sender: Any)
+    
+    {
+        flg=1
+        count=Double(sum.text!)!
+        sum.text=""
+        
+    }
+    @IBAction func minus(_ sender: Any) {
+    
+    
+        flg=2
+        count=Double(sum.text!)!
+        sum.text=""
+        
+    }
+    @IBAction func multiply(_ sender: Any) {
+    
+   
+        flg=3
+        count=Double(sum.text!)!
+        sum.text=""
+        
+    }
+    @IBAction func divided(_ sender: Any) {
+    
+    
+        flg=4
+        count=Double(sum.text!)!
+        sum.text=""
+    
+    }
+    @IBAction func equal(_ sender: Any) {
+    
+
+        switch flg {
+        case 1:
+            var temp = Double()
+            temp=count+Double(sum.text!)!
+            sum.text="\(temp)"
+        case 2:
+            var temp = Double()
+            
+            temp=count-Double(sum.text!)!
+            sum.text="\(temp)"
+        case 3:
+            var temp = Double()
+            temp=count*Double(sum.text!)!
+            sum.text="\(temp)"
+        case 4:
+            var temp : Double
+            if sum.text=="0"{
+                sum.text="除数不能等于0"
+            }
+            else{
+                temp=count/Double(sum.text!)!
+                
+                sum.text="\(temp)"
+            }
+        default:
+            print("wrong")
+        }
+        
+    }
+    
+    @IBAction func one(_ sender: Any) {
+    
+  
+        sum.text=sum.text!+"1"
+    }
+    @IBAction func two(_ sender: Any) {
+    
+
+        sum.text=sum.text!+"2"
+    }
+    @IBAction func three(_ sender: Any) {
+    
+   
+        sum.text=sum.text!+"3"
+    }
+    @IBAction func four(_ sender: Any) {
+    
+          sum.text=sum.text!+"4"
+    }
+    @IBAction func five(_ sender: Any) {
+    
+
+        sum.text=sum.text!+"5"
+    }
+    @IBAction func six(_ sender: Any) {
+    
+   
+        sum.text=sum.text!+"6"
+    }
+    @IBAction func seven(_ sender: Any) {
+    
+    
+        sum.text=sum.text!+"7"
+    }
+    @IBAction func eight(_ sender: Any) {
+    
+    
+        sum.text=sum.text!+"8"
+    }
+    @IBAction func nine(_ sender: Any) {
+    
+            sum.text=sum.text!+"9"
+    }
+    @IBAction func zero(_ sender: Any) {
+    
+          sum.text=sum.text!+"0"
+    }
+    
+    @IBAction func AC(_ sender: Any) {
+    
+  
+        sum.text=""
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    @IBAction func setnum(_ sender: UIButton) {
-        if(resulttxt.text! != "0" && isfinash == false){
-            resulttxt.text! += String(sender.tag)
-        }else{
-            resulttxt.text! = String(sender.tag)
-            isfinash = false
-        }
-    }
-    
-    @IBAction func setfh(_ sender: UIButton) {
-        if(fristval == 0){
-            fristval = (resulttxt.text! as NSString).doubleValue
-        }else{
-            equal(sender)
-        }
-        fhval = sender.tag
-        isfinash = true
+        // Dispose of any resources that can be recreated.
     }
     
     
-    @IBAction func equal(_ sender: Any) {
-        if fristval != 0 && fhval != 0 {
-            sencendval = (resulttxt.text! as NSString).doubleValue
-            switch (fhval){
-            case 1:
-                fristval += sencendval
-            case 2:
-                fristval -= sencendval
-            case 3:
-                fristval *= sencendval
-            case 4:
-                fristval /= sencendval
-            default:
-                break
-            }
-            var result:String = String(fristval)
-            let len = result.characters.index(of:".")
-            let str = "0"+result.substring(from: len!)
-            
-            if ((str as NSString).doubleValue == 0)
-            {
-                result = result.substring(to: len!)
-            }
-            resulttxt.text! = result
-            fhval = 0
-            isfinash = true
-        }
-    }
-    
-    @IBAction func point(_ sender: Any) {
-        if(!resulttxt.text!.contains(".") && isfinash == false){
-            resulttxt.text! += "."
-        }
-    }
-    
+}
 
 
-    @IBAction func reset(_ sender: Any) {
-        resulttxt.text = "0"
-        fristval = 0
-        sencendval = 0
-        fhval = 0    }
-    }
+
+
+
+
+
+
+
+
+
+
+
+
